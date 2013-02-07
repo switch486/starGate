@@ -1,0 +1,64 @@
+###
+#
+# RADME for the Stargate lego motor driver
+# TODO - write more
+# TODO - licence
+# switch486 @ 2013
+###
+
+TOC:
+
+0. Materials needed
+1. Installation
+2. Running
+3. More information
+
+--------------------
+
+0. Materials needed
+
+  1. A Raspberry Pi
+  2. A Lego Motor
+  3. A Lego Motor driver*
+  4. 9 diodes with a wiring*
+  5. TBD photodiodes?*
+  6. A Start Button with wiring*
+  7. Loudspeakers? :D
+
+  (*) - see the More Information part for links and other knowledge sources
+
+1. Installation
+
+  -- AROUND RasPi things to be done --
+
+  TBD
+
+  -- SOFTWARE on the RasPi --
+  The points mentioned below are needed to start the application so please execute them before running.
+
+  1. wiringPi installation : https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/
+  2. music player configuration : 
+
+     sudo modprobe snd_bcm2835
+     sudo amixer cset numid=3 1
+  
+     The first checks if the module for music is loaded - should be
+     The second switches the default HDMI music to the Jack output
+     Link: http://www.raspberrypi-spy.co.uk/2012/06/raspberry-pi-speakers-analog-sound-test/-
+  3. Music player installation: 
+
+     sudo apt-get install mpg123
+
+  4. music download and placement - its up to You what should be played - just download the track and change the 
+     music link in the "musicPath" in the script: "starGateStart.sh"
+  
+  --HARDWARE to be connected --
+  See the More Information part where the connection is mentioned TBD
+
+2. Running
+
+  If You are sure, that everything is connected correctly, then execute the script: "./starGateStart.sh".
+
+3. More Information 
+
+  TODO - link to the blog post where everything is described and other sources of information
