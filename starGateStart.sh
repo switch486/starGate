@@ -145,7 +145,7 @@ setSystemWaiting ()
 #######
 playMusic () {
 #TODO - will this work?
-  echo "-Music starting `$musicPath`"
+  echo "-Music starting"
   mpg123 $musicPath & >> /dev/null
   PID=$!
   echo $PID > music.pid
