@@ -48,7 +48,8 @@ lamp6=13
 detectorL=14
 detectorR=15
 
-# the 16 pin is unused.
+# the 16 pin is used for the LED strips starting
+ledStart=16
 
 # NOTE - turing and lightning sequences
 # # # # #
@@ -87,6 +88,9 @@ setup () {
 
   echo "--Setup the detectors"
   for i in $detectorL $detectorR ; do gpio mode  $i in ; done
+
+  echo "--Setup the Led Stripe"
+  gpio mode $ledStart out
 
   echo "-Setup finished"
 }
@@ -145,7 +149,7 @@ setSystemWaiting ()
 #######
 playMusic () {
 #TODO - will this work?
-  echo "-Music starting `$musicPath`"
+  echo "-Music starting"
   mpg123 $musicPath & >> /dev/null
   PID=$!
   echo $PID > music.pid
@@ -187,6 +191,17 @@ diagnosis () {
 
 #######
 #
+# Fire The LED Stripes
+#
+#######
+fireLedStripes () {
+  gpio write $ledStart 1;
+  sleep 15;
+  gpio write $ledStart 0;
+}
+
+#######
+#
 # Start the sequence setting on the motor
 #
 #######
@@ -209,6 +224,7 @@ while true; do
   setSystemWorking
   playMusic
   startSequencing
+  fireLedStripes
   reset
   stopMusic
   setSystemWaiting
